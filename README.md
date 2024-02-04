@@ -4,6 +4,14 @@ I built [bakersfieldtechnology.com](https://bakersfieldtechnology.com) using Nex
 
 I'm currently rebuilding the site–not because I'm seeing contracting work in Bakersfield, but instead so I can get experience with Go, Templ and Vite. I also believe that Go apps are lightweight enough that I can probably run a dozen apps on a $5/month DigitalOcean server.
 
+## Developing
+
+Run the following to start the Templ watcher:
+
+```sh
+templ generate --watch --proxy="http://localhost:3005" --cmd="go run ."
+```
+
 ## Router
 
 I'm using [Echo](https://echo.labstack.com/) for routing on this project because I want to try something I haven't used, Echo's error handling looks simpler than `net/http`-compatible libraries, it has comprehensive docs, and Primeagen uses it in his Go repos 🤷‍♂️
