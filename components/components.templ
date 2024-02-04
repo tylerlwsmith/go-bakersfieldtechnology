@@ -1,6 +1,6 @@
 package components 
 
-templ Hello(name string) {
+templ Layout() {
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
@@ -9,7 +9,15 @@ templ Hello(name string) {
 			<title>Document</title>
 		</head>
 		<body>
-			<div>Hello, { name }</div>
+			<div>
+				{ children... }
+			</div>
 		</body>
 	</html>
+}
+
+templ Homepage() {
+	@Layout() {
+		<h1>Homepage</h1>
+	}
 }

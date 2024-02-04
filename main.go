@@ -1,20 +1,17 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 
-	"github.com/a-h/templ"
+	"github.com/labstack/echo/v4"
 
 	"bakersfieldtechnology.com/components"
 )
 
 func main() {
-
-	component := components.Hello("Tyler")
-
-	http.Handle("/", templ.Handler(component))
-
-	fmt.Println("Listening on :3005")
-	http.ListenAndServe(":3005", nil)
+	app := echo.New()
+	app.GET("/", func(c echo.Context) error {
+		return components.Render(c, http.StatusOK, components.Homepage())
+	})
+	app.Logger.Fatal(app.Start(":3005"))
 }
