@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+
 	component := components.Hello("Tyler")
 
 	http.Handle("/", templ.Handler(component))
