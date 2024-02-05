@@ -1,11 +1,16 @@
-// vite.config.js
+import path from "path"
+import { defineConfig } from 'vite'
+
 export default defineConfig({
+  root:  "assets/",
+  base: "/",
   build: {
+    ourDir: path.join(__dirname,'dist'),
     // generate ./assets/manifest.json in outDir
-    manifest: "./assets/manifest.json",
+    manifest: "assets/manifest.json",
     rollupOptions: {
       // overwrite default .html entry
-      input: "/path/to/main.js",
+      input: "assets/scripts/app.ts",
     },
   },
 });
