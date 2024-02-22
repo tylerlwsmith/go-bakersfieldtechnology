@@ -31,4 +31,4 @@ For posterity, I'm including a list of all the routers I evaluated for this proj
 
 ## Vite
 
-I am following the [Vite Backend Integration guide](https://vitejs.dev/guide/backend-integration.html) to try to use Vite for compiling JS/TS and Scss.
+I am following the [Vite Backend Integration guide](https://vitejs.dev/guide/backend-integration.html) to try to use Vite for compiling JS/TS and Scss. However, the project uses Tailwind for the majority of its styling.
