@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://deadhandmedia.com/sitemap.xml
+Sitemap: https://bakersfieldtechnology.com/sitemap.xml
