@@ -32,3 +32,7 @@ For posterity, I'm including a list of all the routers I evaluated for this proj
 ## Vite
 
 I am following the [Vite Backend Integration guide](https://vitejs.dev/guide/backend-integration.html) to try to use Vite for compiling JS/TS and Scss. However, the project uses Tailwind for the majority of its styling.
+
+## Build tag gopls support
+
+Support for mutually exclusive build tags is not great. Read more [here](https://github.com/golang/go/issues/29202).
