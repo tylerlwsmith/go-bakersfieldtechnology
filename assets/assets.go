@@ -12,10 +12,12 @@ import (
 )
 
 //go:embed dist
-var AssetFiles embed.FS
+var assetFiles embed.FS
 
 //go:embed public
 var PublicFiles embed.FS
+
+var AssetsHandler http.Handler
 
 type manifestEntry struct {
 	File    string `json:"file"`
@@ -23,20 +25,10 @@ type manifestEntry struct {
 	Src     string `json:"src"`
 }
 
-type assetManifest map[string]manifestEntry
-
-var manifest assetManifest
-
-func (m assetManifest) resolve(src string) (resolved string, err error) {
-	if entry, ok := m[src]; ok {
-		return entry.File, nil
-	} else {
-		return "", fmt.Errorf("assets.resolve: asset %v not found", src)
-	}
-}
+var manifest map[string]manifestEntry
 
 func init() {
-	f, err := AssetFiles.ReadFile("dist/manifest.json")
+	f, err := assetFiles.ReadFile("dist/manifest.json")
 	if err != nil {
 		log.Fatalf("assets.init %v", err)
 	}
@@ -45,20 +37,20 @@ func init() {
 	if err != nil {
 		log.Fatalf("assets.init %v", err)
 	}
-}
 
-func Get(src string) (resolved string, err error) {
-	resolved, err = manifest.resolve(src)
-
-	return "/assets/" + resolved, err
-}
-
-func AssetHandler() http.Handler {
 	log.Print("using embed mode")
-	fsys, err := fs.Sub(AssetFiles, "dist/public")
+	fsys, err := fs.Sub(assetFiles, "dist/public")
 	if err != nil {
 		panic(err)
 	}
 
-	return http.FileServer(http.FS(fsys))
+	AssetsHandler = http.FileServer(http.FS(fsys))
+}
+
+func Get(src string) (resolved string, err error) {
+	if entry, ok := manifest[src]; ok {
+		return "/assets/" + entry.File, nil
+	} else {
+		return "", fmt.Errorf("assets.resolve: asset %v not found", src)
+	}
 }

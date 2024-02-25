@@ -11,9 +11,8 @@ import (
 
 func main() {
 	app := echo.New()
-	assetHandler := assets.AssetHandler()
 
-	app.GET("/assets/public/*", echo.WrapHandler(http.StripPrefix("/assets/public", assetHandler)))
+	app.GET("/assets/public/*", echo.WrapHandler(http.StripPrefix("/assets/public", assets.AssetsHandler)))
 	app.GET("/", func(c echo.Context) error {
 		return components.Render(c, http.StatusOK, components.Homepage())
 	})
