@@ -30,24 +30,24 @@ func (m assetManifest) resolve(src string) (resolved string, err error) {
 	if entry, ok := m[src]; ok {
 		return entry.Src, nil
 	} else {
-		return "", fmt.Errorf("asset %v not found", src)
+		return "", fmt.Errorf("assets.resolve: asset %v not found", src)
 	}
 }
 
 func init() {
 	f, err := AssetFiles.Open("manifest.json")
 	if err != nil {
-		log.Fatal("unable to open asset manifest.")
+		log.Fatal("assets.init: unable to open asset manifest.")
 	}
 
 	b, err := io.ReadAll(f)
 	if err != nil {
-		log.Fatal("unable to open asset manifest.")
+		log.Fatal("assets.init: unable to open asset manifest.")
 	}
 
 	err = json.Unmarshal(b, &manifest)
 	if err != nil {
-		log.Fatal("unable to unmarshal manifest")
+		log.Fatal("assets.init: unable to unmarshal manifest.")
 	}
 }
 
