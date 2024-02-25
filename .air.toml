@@ -6,7 +6,13 @@ pre_cmd = ["templ generate"]
 cmd = "go build -o ./tmp/main ."
 bin = "./tmp/main"
 delay = 0
-exclude_dir = ["assets", "tmp", "vendor", "node_modules"]
+exclude_dir = [
+    "assets/scripts",
+    "assets/styles",
+    "tmp",
+    "vendor",
+    "node_modules",
+]
 exclude_file = []
 exclude_regex = ["_test\\.go", ".*_templ\\.go", ".*_templ\\.txt"]
 exclude_unchanged = true
