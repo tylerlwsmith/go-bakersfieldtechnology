@@ -6,7 +6,9 @@ import (
 	"embed"
 	"encoding/json"
 	"fmt"
+	"io/fs"
 	"log"
+	"net/http"
 )
 
 //go:embed dist
@@ -47,5 +49,16 @@ func init() {
 
 func Get(src string) (resolved string, err error) {
 	resolved, err = manifest.resolve(src)
-	return resolved, err
+
+	return "/assets/" + resolved, err
+}
+
+func AssetHandler() http.Handler {
+	log.Print("using embed mode")
+	fsys, err := fs.Sub(AssetFiles, "dist/public")
+	if err != nil {
+		panic(err)
+	}
+
+	return http.FileServer(http.FS(fsys))
 }
