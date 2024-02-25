@@ -1,4 +1,18 @@
-package components 
+package components
+
+import (
+	"bakersfieldtechnology.com/assets"
+)
+
+var script string
+
+func init() {
+	s, err := assets.Get("scripts/app.ts")
+	if err != nil {
+		panic("script not found")
+	}
+	script = s
+}
 
 templ Layout() {
 	<!DOCTYPE html>
@@ -13,6 +27,7 @@ templ Layout() {
 				{ children... }
 			</div>
 		</body>
+		<script type="module" src={ script }></script>
 	</html>
 }
 
