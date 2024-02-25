@@ -1,5 +1,3 @@
-// View me at http://localhost:5173/scripts/app.ts
-
-const message: string = "Hi mom";
-
-console.log(message);
+console.log(
+  "Want to view the source for this site? Go to https://github.com/tylerlwsmith/go-bakersfieldtechnology"
+);
