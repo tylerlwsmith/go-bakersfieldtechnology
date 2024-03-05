@@ -4,7 +4,7 @@ templ Hero() {
 	<header
 		className="
 			flex items-center
-			min-h-screen bg-gradient-to-br 
+			min-h-screen bg-gradient-to-br
 			from-pink-600 to-purple-500 text-white
 			px-6 sm:px-10 pt-24 pb-20 relative
 		"
@@ -20,3 +20,23 @@ templ insetBackground() {
 	/>
 }
 
+templ centeredContainer() {
+	<div
+      class="max-w-full w-[1000px] mx-auto relative z-10"
+    >
+		@children()
+	</div>
+}
+
+templ constrainedWidth(){
+	<div
+		class="
+			mx-auto text-center
+			sm:mx-0 sm:text-left
+			sm:max-w-md
+			md:max-w-2xl
+		"
+	>
+		@children()
+	</div>
+}
