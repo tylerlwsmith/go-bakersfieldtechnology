@@ -1,6 +1,6 @@
 package components
 
-templ hero() {
+templ Hero() {
 	<header
 		className="
 			flex items-center
@@ -9,6 +9,14 @@ templ hero() {
 			px-6 sm:px-10 pt-24 pb-20 relative
 		"
 	>
+		@insetBackground()
 	</header>
+}
+
+templ insetBackground() {
+	<div
+		class="z-0 inset-0 fixed bg-no-repeat bg-cover bg-center opacity-30 mix-blend-soft-light"
+		style="background-image: url(/static/hero.jpg)"
+	/>
 }
 
