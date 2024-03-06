@@ -24,7 +24,7 @@ templ centeredContainer() {
 	<div
       class="max-w-full w-[1000px] mx-auto relative z-10"
     >
-		@children()
+		{ children... }
 	</div>
 }
 
@@ -37,6 +37,7 @@ templ constrainedWidth(){
 			md:max-w-2xl
 		"
 	>
-		@children()
+		{ children... }
 	</div>
 }
+

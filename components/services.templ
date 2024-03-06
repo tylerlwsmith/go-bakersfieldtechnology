@@ -1,0 +1,50 @@
+package components
+
+type struct service {
+	Name string
+	Icon any
+}
+
+var services = []service{
+	{ Name: "Web development", Icon: nil }
+	{ Name: "Mobile development", Icon: nil }
+	{ Name: "Data automation", Icon: nil }
+	{ Name: "Website design", Icon: nil }
+	{ Name: "Website audits", Icon: nil }
+	{ Name: "Application maintenance", Icon: nil }
+	{ Name: "White-label development", Icon: nil }
+}
+
+templ service() {
+	<div
+		class="
+			bg-gradient-to-br from-pink-600 to-purple-500 text-white
+			py-4 rounded-2xl px-6 drop-shadow-lg w-full
+		"
+	>
+		{ children... }
+	</div>
+}
+
+templ serviceName() {
+	<div
+		class="
+			font-bold tracking-wide py-1 !leading-snug
+			text-lg
+			md:text-base
+			xl:text-lg
+		"
+	>
+		{ children... }
+	</div>
+}
+
+templ iconWrapper() {
+	<div className="h-10 mb-1">
+		{ children... }
+	</div>
+}
+
+templ Services() {
+	
+}
