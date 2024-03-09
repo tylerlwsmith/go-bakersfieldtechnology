@@ -17,18 +17,18 @@ templ insetBackground() {
 	<div
 		class="z-0 inset-0 fixed bg-no-repeat bg-cover bg-center opacity-30 mix-blend-soft-light"
 		style="background-image: url(/static/hero.jpg)"
-	/>
+	></div>
 }
 
 templ centeredContainer() {
 	<div
-      class="max-w-full w-[1000px] mx-auto relative z-10"
-    >
+		class="max-w-full w-[1000px] mx-auto relative z-10"
+	>
 		{ children... }
 	</div>
 }
 
-templ constrainedWidth(){
+templ constrainedWidth() {
 	<div
 		class="
 			mx-auto text-center
@@ -40,4 +40,3 @@ templ constrainedWidth(){
 		{ children... }
 	</div>
 }
-
