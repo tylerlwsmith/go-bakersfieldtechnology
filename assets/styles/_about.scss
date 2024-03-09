@@ -1,0 +1,46 @@
+$content-container-width: 768px;
+$offset-width: calc(50vw - calc($content-container-width / 2));
+$offset-min-width: 300px;
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("/thumbs-up-tyler-cropped.png") left bottom / 120px no-repeat;
+  transform: scaleX(-1);
+  @media (min-width: theme("screens.lg")) {
+    background: url("/thumbs-up-tyler-cropped.png") no-repeat bottom left /
+      contain;
+    transform: scaleX(1);
+  }
+}
+
+.gradient {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  max-width: calc(100vw - ($offset-min-width / 2));
+  width: calc(100vw - $offset-width + ($offset-min-width / 2));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0px,
+    rgba(255, 255, 255, 0.9) $offset-min-width,
+    rgb(255, 255, 255) 100%
+  );
+  @media (min-width: theme("screens.lg")) {
+    display: block;
+  }
+}
+
+.offset {
+  display: none;
+  width: $offset-width;
+  min-width: $offset-min-width;
+  @media (min-width: theme("screens.lg")) {
+    display: block;
+  }
+}
