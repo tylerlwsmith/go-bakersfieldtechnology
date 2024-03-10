@@ -1,0 +1,93 @@
+package homepage
+
+var tools: []string = {
+	"Laravel",
+	"Django",
+	"Ruby on Rails",
+	"WordPress",
+	"Docker",
+	"Ansible",
+	"Terraform",
+	"React",
+	"Next.js",
+	"React Native",
+	"Express.js",
+	"Vue",
+	"Svelte",
+	"jQuery",
+}
+
+var languages: []string = {"JavaScript", "Python", "PHP", "Ruby"}
+
+templ listTitle() {
+	<h3 className="mb-2 text-lg sm:text-xl">
+		{ children... }
+	</h3>
+}
+
+templ list() {
+	<ul
+		className={`text-gray-500 mb-6 ${className}`}
+		style={{ columnCount: 2, ...style }}
+	>
+		{ children... }
+	</ul>
+}
+
+templ listItem() {
+	<li className="sm:text-lg sm:mb-1">
+		{ children...}
+	</li>
+}
+
+templ Services() {
+	<div className="pt-16 pb-6">
+		<div className="max-w-2xl mx-auto px-8">
+			<h2
+				className="
+					font-black mb-8 text-pink-600
+					text-3xl
+					xs:text-5xl
+					sm:text-6xl
+				"
+			>
+				Technologies
+			</h2>
+			<div className="prose text-xl font-light text-gray-500 not-antialiased leading-8 mb-8 max-w-xl">
+				<p>
+					Bakersfield Technology has experience with a wide variety of tools
+					and languages. Here are some favorites.
+				</p>
+			</div>
+
+			@listTitle() { Tools }
+
+			@list() {
+				for _, tool := range tools {
+					@listItem { tool }
+				}
+			}
+
+			@listTitle() { Languages }
+			
+			@list() {
+				for _, language := range languages {
+					@listItem() { language }
+				}
+			}
+			<div
+				className="text-sm pt-2 text-gray-500 leading-normal"
+				style={{ maxWidth: 350 }}
+			>
+				<p>
+					Don't see your organization's tools listed on here?
+
+					<ScrollLink href="#contact" className="underline">
+						Get in touch
+					</ScrollLink>
+		.
+				</p>
+			</div>
+		</div>
+	</div>
+}
