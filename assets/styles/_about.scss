@@ -2,7 +2,7 @@ $content-container-width: 768px;
 $offset-width: calc(50vw - calc($content-container-width / 2));
 $offset-min-width: 300px;
 
-.backgroundImage {
+[data-custom-style="background-image"] {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -17,7 +17,7 @@ $offset-min-width: 300px;
   }
 }
 
-.gradient {
+[data-custom-style="gradient"] {
   display: none;
   position: absolute;
   top: 0;
@@ -36,7 +36,7 @@ $offset-min-width: 300px;
   }
 }
 
-.offset {
+[data-custom-style="offset"] {
   display: none;
   width: $offset-width;
   min-width: $offset-min-width;
