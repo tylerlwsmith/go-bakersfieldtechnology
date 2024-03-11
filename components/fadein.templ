@@ -1,0 +1,17 @@
+package components
+
+templ Fadein(id string) {
+	<div
+		id={id}
+		class="
+			transform-gpu transition ease-out duration-300
+			${show ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0"}
+		"
+		data-fadein-show="translate-x-0 opacity-100"
+		data-fadein-hide="translate-x-6 opacity-0"
+		data-fadein-state="hide"
+	>
+		{ children... }
+	</div>
+
+}

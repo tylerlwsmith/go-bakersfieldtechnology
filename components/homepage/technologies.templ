@@ -20,14 +20,14 @@ var tools: []string = {
 var languages: []string = {"JavaScript", "Python", "PHP", "Ruby"}
 
 templ listTitle() {
-	<h3 className="mb-2 text-lg sm:text-xl">
+	<h3 class="mb-2 text-lg sm:text-xl">
 		{ children... }
 	</h3>
 }
 
 templ list() {
 	<ul
-		className={`text-gray-500 mb-6 ${className}`}
+		class={`text-gray-500 mb-6 ${class}`}
 		style={{ columnCount: 2, ...style }}
 	>
 		{ children... }
@@ -35,16 +35,16 @@ templ list() {
 }
 
 templ listItem() {
-	<li className="sm:text-lg sm:mb-1">
+	<li class="sm:text-lg sm:mb-1">
 		{ children...}
 	</li>
 }
 
 templ Services() {
-	<div className="pt-16 pb-6">
-		<div className="max-w-2xl mx-auto px-8">
+	<div class="pt-16 pb-6">
+		<div class="max-w-2xl mx-auto px-8">
 			<h2
-				className="
+				class="
 					font-black mb-8 text-pink-600
 					text-3xl
 					xs:text-5xl
@@ -53,7 +53,7 @@ templ Services() {
 			>
 				Technologies
 			</h2>
-			<div className="prose text-xl font-light text-gray-500 not-antialiased leading-8 mb-8 max-w-xl">
+			<div class="prose text-xl font-light text-gray-500 not-antialiased leading-8 mb-8 max-w-xl">
 				<p>
 					Bakersfield Technology has experience with a wide variety of tools
 					and languages. Here are some favorites.
@@ -76,13 +76,13 @@ templ Services() {
 				}
 			}
 			<div
-				className="text-sm pt-2 text-gray-500 leading-normal"
+				class="text-sm pt-2 text-gray-500 leading-normal"
 				style={{ maxWidth: 350 }}
 			>
 				<p>
 					Don't see your organization's tools listed on here?
 
-					<ScrollLink href="#contact" className="underline">
+					<ScrollLink href="#contact" class="underline">
 						Get in touch
 					</ScrollLink>
 		.

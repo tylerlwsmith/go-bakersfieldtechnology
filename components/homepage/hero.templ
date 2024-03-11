@@ -2,7 +2,7 @@ package homepage
 
 templ Hero() {
 	<header
-		className="
+		class="
 			flex items-center
 			min-h-screen bg-gradient-to-br
 			from-pink-600 to-purple-500 text-white
@@ -10,6 +10,30 @@ templ Hero() {
 		"
 	>
 		@insetBackground()
+		@centeredContainer() {
+			@constrainedWidth() {
+				<div class="fade-in">
+					<h1
+						class="
+							font-black tracking-wide mb-8
+							text-[12vw] leading-[1.0em]
+							sm:text-7xl
+							md:text-8xl
+						"
+					>
+						Bakersfield Technology
+					</h1>
+				</div>
+				<div class="fade-in">
+					<p class="text-lg sm:text-2xl font-light tracking-wider mb-14">
+						Building technology for Bakersfield's digital needs
+					</p>
+				</div>
+				<div class="fade-in">
+					TODO: SCROLL LINK
+				</div>
+			}
+		}
 	</header>
 }
 
