@@ -5,9 +5,9 @@ import (
 )
 
 type pageSection struct {
-	Component: templ.Component
-	MenuTitle: string
-	ID: string
+	Component func() templ.Component
+	MenuTitle string
+	ID string
 }
 
 var pageSections = []pageSection{
@@ -22,7 +22,7 @@ var pageSections = []pageSection{
 		ID: "technologies",
 	},
 	{
-		Component: About,
+		Component: WhoAmI,
 		MenuTitle: "About",
 		ID: "about",
 	},
@@ -30,7 +30,7 @@ var pageSections = []pageSection{
 		Component: Contact,
 		MenuTitle: "Contact",
 		ID: "contact",
-	}
+	},
 }
 
 templ Homepage() {
@@ -43,7 +43,7 @@ templ Homepage() {
 				"
 			>
 				<scroll-link
-					href={`#${pageSections[0].id}`}
+					href="${pageSections[0].id}"
 					class="py-2 px-5 bg-pink-600"
 				>
 					Skip To Content
@@ -57,44 +57,44 @@ templ Homepage() {
 				"
 			>
 				<ul class="flex justify-end">
-					{pageSections.map((section) => (
-						<li key={section.id} class="mx-4">
+					for _, section := range pageSections {
+						<li class="mx-4">
 							<scroll-link
 								class="border-b border-transparent hover:border-white transition-all p-1.5"
-								href={`#${section.id}`}
+								href="#${section.ID}"
 							>
-								{section.menuTitle}
+								{section.MenuTitle}
 							</scroll-link>
 						</li>
-					))}
+					}
 				</ul>
 			</nav>
 
 			<main>
-				<Hero />
+				@Hero()
 
-				{pageSections.map((section) => (
-					<section id={section.id} key={section.id} class="bg-white">
-						{section.component}
+				for _, section := range pageSections {
+					<section id={section.ID} class="bg-white">
+						@section.Component()
 					</section>
-				))}
+				}
 			</main>
 
 			<footer class="bg-gray-900 px-10 py-4 text-gray-300 text-center text-md flex justify-between">
 				<div>
-					©{" "}
+					©
 					<a
 						href="https://deadhandmedia.com/"
 						class="text-pink-500 underline"
 					>
 						Tyler Smith
-					</a>{" "}
-					{new Date().getFullYear()}
+					</a>
+					TODO: ADD DATE
 				</div>
 				<div>
-					<Link href="/privacy-policy" class="text-pink-500">
+					<a href="/privacy-policy" class="text-pink-500">
 						Privacy Policy
-					</Link>
+					</a>
 				</div>
 			</footer>
 		</div>

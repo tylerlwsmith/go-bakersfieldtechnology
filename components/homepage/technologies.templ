@@ -40,7 +40,7 @@ templ listItem() {
 	</li>
 }
 
-templ Services() {
+templ Technologies() {
 	<div class="pt-16 pb-6">
 		<div class="max-w-2xl mx-auto px-8">
 			<h2
@@ -64,8 +64,8 @@ templ Services() {
 			}
 			@list() {
 				for _, tool := range tools {
-					@listItem {
-						tool 
+					@listItem() {
+						{ tool } 
 					}
 				}
 			}
