@@ -5,32 +5,32 @@ import (
 )
 
 type pageSection struct {
-	Component templ.Component
-	MenuTitle string
-	ID string
+	Component: templ.Component
+	MenuTitle: string
+	ID: string
 }
 
-var pageSections = []pageSection{
+var pageSections: []pageSection = {
 	{
-		Component: Services,
-		MenuTitle: "Services",
-		ID: "services",
+		Component: Services
+		MenuTitle: "Services"
+		ID: "services"
 	},
 	{
-		Component: Technologies,
-		MenuTitle: "Technologies",
-		ID: "technologies",
+		Component: Technologies
+		MenuTitle: "Technologies"
+		ID: "technologies"
 	},
 	{
-		Component: About,
-		MenuTitle: "About",
-		ID: "about",
+		Component: About
+		MenuTitle: "About"
+		ID: "about"
 	},
 	{
-		Component: Contact,
-		MenuTitle: "Contact",
-		ID: "contact",
-	},
+		Component: Contact
+		MenuTitle: "Contact"
+		ID: "contact"
+	}
 }
 
 templ Home() {
@@ -41,12 +41,12 @@ templ Home() {
 				focus-within:not-sr-only focus-within:fixed
 			"
 		>
-			<scroll-link
+			<ScrollLink
 				href={`#${pageSections[0].id}`}
 				class="py-2 px-5 bg-pink-600"
 			>
 				Skip To Content
-			</scroll-link>
+			</ScrollLink>
 		</span>
 		<nav
 			class="
@@ -56,32 +56,32 @@ templ Home() {
 			"
 		>
 			<ul class="flex justify-end">
-				for _, section := range pageSections {
-					<li class="mx-4">
-						<scroll-link
+				{pageSections.map((section) => (
+					<li key={section.id} class="mx-4">
+						<ScrollLink
 							class="border-b border-transparent hover:border-white transition-all p-1.5"
-							href={`#${section.id}`}
-						>
-							{section.menuTitle}
-						</scroll-link>
+						href={`#${section.id}`}
+					>
+						{section.menuTitle}
+					</ScrollLink>
 					</li>
-				}
+				))}
 			</ul>
 		</nav>
 
 		<main>
-			@Hero()
+			<Hero />
 
-			for _, section := range pageSections {
+			{pageSections.map((section) => (
 				<section id={section.id} key={section.id} class="bg-white">
 					{section.component}
 				</section>
-			}
+			))}
 		</main>
 
 		<footer class="bg-gray-900 px-10 py-4 text-gray-300 text-center text-md flex justify-between">
 			<div>
-				©
+				©{" "}
 				<a
 					href="https://deadhandmedia.com/"
 					class="text-pink-500 underline"
@@ -91,9 +91,9 @@ templ Home() {
 				{new Date().getFullYear()}
 			</div>
 			<div>
-				<a href="/privacy-policy" class="text-pink-500">
+				<Link href="/privacy-policy" class="text-pink-500">
 					Privacy Policy
-				</a>
+				</Link>
 			</div>
 		</footer>
 	</div>
