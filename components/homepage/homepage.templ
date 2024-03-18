@@ -1,7 +1,7 @@
 package homepage
 
 import (
-	"github.com/a-h/templ"
+	"bakersfieldtechnology.com/components"
 )
 
 type pageSection struct {
@@ -10,91 +10,93 @@ type pageSection struct {
 	ID: string
 }
 
-var pageSections: []pageSection = {
+var pageSections = []pageSection{
 	{
-		Component: Services
-		MenuTitle: "Services"
-		ID: "services"
+		Component: Services,
+		MenuTitle: "Services",
+		ID: "services",
 	},
 	{
-		Component: Technologies
-		MenuTitle: "Technologies"
-		ID: "technologies"
+		Component: Technologies,
+		MenuTitle: "Technologies",
+		ID: "technologies",
 	},
 	{
-		Component: About
-		MenuTitle: "About"
-		ID: "about"
+		Component: About,
+		MenuTitle: "About",
+		ID: "about",
 	},
 	{
-		Component: Contact
-		MenuTitle: "Contact"
-		ID: "contact"
+		Component: Contact,
+		MenuTitle: "Contact",
+		ID: "contact",
 	}
 }
 
-templ Home() {
-	<div class="relative">
-		<span
-			class="
-				sr-only inline-block top-8 left-5 border border-white z-20 text-white
-				focus-within:not-sr-only focus-within:fixed
-			"
-		>
-			<ScrollLink
-				href={`#${pageSections[0].id}`}
-				class="py-2 px-5 bg-pink-600"
+templ Homepage() {
+	@components.Layout() {
+		<div class="relative">
+			<span
+				class="
+					sr-only inline-block top-8 left-5 border border-white z-20 text-white
+					focus-within:not-sr-only focus-within:fixed
+				"
 			>
-				Skip To Content
-			</ScrollLink>
-		</span>
-		<nav
-			class="
-				absolute left-0 right-0 top-0 text-white p-8 z-10
-				hidden
-				sm:block
-			"
-		>
-			<ul class="flex justify-end">
-				{pageSections.map((section) => (
-					<li key={section.id} class="mx-4">
-						<ScrollLink
-							class="border-b border-transparent hover:border-white transition-all p-1.5"
-						href={`#${section.id}`}
-					>
-						{section.menuTitle}
-					</ScrollLink>
-					</li>
-				))}
-			</ul>
-		</nav>
-
-		<main>
-			<Hero />
-
-			{pageSections.map((section) => (
-				<section id={section.id} key={section.id} class="bg-white">
-					{section.component}
-				</section>
-			))}
-		</main>
-
-		<footer class="bg-gray-900 px-10 py-4 text-gray-300 text-center text-md flex justify-between">
-			<div>
-				©{" "}
-				<a
-					href="https://deadhandmedia.com/"
-					class="text-pink-500 underline"
+				<scroll-link
+					href={`#${pageSections[0].id}`}
+					class="py-2 px-5 bg-pink-600"
 				>
-					Tyler Smith
-				</a>{" "}
-				{new Date().getFullYear()}
-			</div>
-			<div>
-				<Link href="/privacy-policy" class="text-pink-500">
-					Privacy Policy
-				</Link>
-			</div>
-		</footer>
-	</div>
+					Skip To Content
+				</scroll-link>
+			</span>
+			<nav
+				class="
+					absolute left-0 right-0 top-0 text-white p-8 z-10
+					hidden
+					sm:block
+				"
+			>
+				<ul class="flex justify-end">
+					{pageSections.map((section) => (
+						<li key={section.id} class="mx-4">
+							<scroll-link
+								class="border-b border-transparent hover:border-white transition-all p-1.5"
+								href={`#${section.id}`}
+							>
+								{section.menuTitle}
+							</scroll-link>
+						</li>
+					))}
+				</ul>
+			</nav>
+
+			<main>
+				<Hero />
+
+				{pageSections.map((section) => (
+					<section id={section.id} key={section.id} class="bg-white">
+						{section.component}
+					</section>
+				))}
+			</main>
+
+			<footer class="bg-gray-900 px-10 py-4 text-gray-300 text-center text-md flex justify-between">
+				<div>
+					©{" "}
+					<a
+						href="https://deadhandmedia.com/"
+						class="text-pink-500 underline"
+					>
+						Tyler Smith
+					</a>{" "}
+					{new Date().getFullYear()}
+				</div>
+				<div>
+					<Link href="/privacy-policy" class="text-pink-500">
+						Privacy Policy
+					</Link>
+				</div>
+			</footer>
+		</div>
+	}
 }

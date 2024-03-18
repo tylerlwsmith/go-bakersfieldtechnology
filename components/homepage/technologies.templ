@@ -1,6 +1,6 @@
 package homepage
 
-var tools: []string = {
+var tools = []string{
 	"Laravel",
 	"Django",
 	"Ruby on Rails",
@@ -17,7 +17,7 @@ var tools: []string = {
 	"jQuery",
 }
 
-var languages: []string = {"JavaScript", "Python", "PHP", "Ruby"}
+var languages = []string{"JavaScript", "Python", "PHP", "Ruby"}
 
 templ listTitle() {
 	<h3 class="mb-2 text-lg sm:text-xl">
@@ -27,7 +27,7 @@ templ listTitle() {
 
 templ list() {
 	<ul
-		class={`text-gray-500 mb-6 ${class}`}
+		class={ `text-gray-500 mb-6 ${class}` }
 		style="columnCount: 2"
 	>
 		{ children... }
@@ -36,7 +36,7 @@ templ list() {
 
 templ listItem() {
 	<li class="sm:text-lg sm:mb-1">
-		{ children...}
+		{ children... }
 	</li>
 }
 
@@ -59,33 +59,36 @@ templ Services() {
 					and languages. Here are some favorites.
 				</p>
 			</div>
-
-			@listTitle() { Tools }
-
+			@listTitle() {
+				Tools 
+			}
 			@list() {
 				for _, tool := range tools {
-					@listItem { tool }
+					@listItem {
+						tool 
+					}
 				}
 			}
-
-			@listTitle() { Languages }
-			
+			@listTitle() {
+				Languages 
+			}
 			@list() {
 				for _, language := range languages {
-					@listItem() { language }
+					@listItem() {
+						{ language }
+					}
 				}
 			}
 			<div
 				class="text-sm pt-2 text-gray-500 leading-normal"
-				style={{ maxWidth: 350 }}
+				style="max-width: 350;"
 			>
 				<p>
 					Don't see your organization's tools listed on here?
-
-					<ScrollLink href="#contact" class="underline">
+					<scroll-link href="#contact" class="underline">
 						Get in touch
-					</ScrollLink>
-		.
+					</scroll-link>
+					.
 				</p>
 			</div>
 		</div>

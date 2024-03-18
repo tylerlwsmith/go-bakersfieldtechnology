@@ -1,22 +1,22 @@
-module homepage
+package homepage
 
-type struct Link {
-	Title: string
-	Link: string
+type Link struct {
+	Title string
+	Link  templ.SafeURL
 }
 
 var links = []Link{
-  { Title: "LinkedIn", Link: "https://www.linkedin.com/in/tylerlwsmith/" },
-  { Title: "Resume", Link: "https://resume.deadhandmedia.com" },
-  { Title: "GitHub", Link: "https://github.com/tylerlwsmith" },
-  { Title: "Blog", Link: "https://dev.to/tylerlwsmith" },
+	{Title: "LinkedIn", Link: "https://www.linkedin.com/in/tylerlwsmith/"},
+	{Title: "Resume", Link: "https://resume.deadhandmedia.com"},
+	{Title: "GitHub", Link: "https://github.com/tylerlwsmith"},
+	{Title: "Blog", Link: "https://dev.to/tylerlwsmith"},
 }
 
 templ WhoAmI() {
-	<div class={`pt-16 pb-60 sm:pb-40 lg:pb-20 relative flex`}>
-		<div class={styles.backgroundImage}></div>
-		<div class={`${styles.gradient}`}></div>
-		<div class={styles.offset}></div>
+	<div class="pt-16 pb-60 sm:pb-40 lg:pb-20 relative flex">
+		<div class="styles.backgroundImage"></div>
+		<div class="$styles.gradient"></div>
+		<div class="styles.offset"></div>
 		<div class="relative max-w-3xl px-8 mx-auto lg:mx-0 w-full">
 			<h2
 				class="
@@ -37,7 +37,6 @@ templ WhoAmI() {
 					voters and legislative decision-makers. When I went independent, my
 					first client was Stan Lee of Marvel Comics fame.
 				</p>
-
 				<p>
 					I returned to Bakersfield in 2019 and I'm eager to share my skills
 					with the community that shaped who I am.
@@ -48,10 +47,10 @@ templ WhoAmI() {
 					<p>Check out my:</p>
 				</div>
 				<ul class="flex flex-wrap">
-					link := range links {
-						<li key={link.Title} class="pr-4">
-							<a href={link.Link} class="text-pink-600 underline">
-								{link.Title}
+					for _, link := range links {
+						<li key={ link.Title } class="pr-4">
+							<a href={ link.Link } class="text-pink-600 underline">
+								{ link.Title }
 							</a>
 						</li>
 					}
