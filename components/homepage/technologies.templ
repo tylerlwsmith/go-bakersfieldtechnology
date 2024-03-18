@@ -1,6 +1,6 @@
 package homepage
 
-var tools: []string = {
+var tools = []string{
 	"Laravel",
 	"Django",
 	"Ruby on Rails",
@@ -17,7 +17,7 @@ var tools: []string = {
 	"jQuery",
 }
 
-var languages: []string = {"JavaScript", "Python", "PHP", "Ruby"}
+var languages = []string{"JavaScript", "Python", "PHP", "Ruby"}
 
 templ listTitle() {
 	<h3 class="mb-2 text-lg sm:text-xl">
@@ -27,8 +27,8 @@ templ listTitle() {
 
 templ list() {
 	<ul
-		class={`text-gray-500 mb-6 ${class}`}
-		style="columnCount: 2"
+		class="text-gray-500 mb-6"
+		style="column-count: 2;"
 	>
 		{ children... }
 	</ul>
@@ -77,14 +77,14 @@ templ Services() {
 			}
 			<div
 				class="text-sm pt-2 text-gray-500 leading-normal"
-				style={{ maxWidth: 350 }}
+				style="max-width: 350px"
 			>
 				<p>
 					Don't see your organization's tools listed on here?
 
-					<ScrollLink href="#contact" class="underline">
+					<scroll-link href="#contact" class="underline">
 						Get in touch
-					</ScrollLink>
+					</scroll-link>
 		.
 				</p>
 			</div>
