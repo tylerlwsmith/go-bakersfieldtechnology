@@ -19,7 +19,7 @@ export function scrollToAnchor(event: MouseEvent) {
   if (!hasTabIndex) section.setAttribute("tabindex", "-1");
   if (!hasOutline) section.style.outline = "none";
 
-  section.scrollIntoView({ behavior: "smooth", block: "start" });
+  section.scrollIntoView({ block: "start" });
   section.focus({ preventScroll: true });
 
   section.addEventListener("blur", function blurListener() {
