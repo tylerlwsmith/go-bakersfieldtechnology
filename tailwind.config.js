@@ -1,10 +1,20 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./components/**/*.templ"
   ],
   theme: {
-    extend: {},
+    screens: {
+      xs: "500px",
+      ...defaultTheme.screens,
+    },
+    extend: {
+      screens: {
+        sm: "574px",
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 }
