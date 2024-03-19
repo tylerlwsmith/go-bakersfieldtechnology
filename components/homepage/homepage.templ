@@ -2,6 +2,8 @@ package homepage
 
 import (
 	"fmt"
+	"time"
+
 	"bakersfieldtechnology.com/components"
 )
 
@@ -32,6 +34,10 @@ var pageSections = []pageSection{
 		MenuTitle: "Contact",
 		ID:        "contact",
 	},
+}
+
+func currentYear() string {
+	return time.Now().Format("2006")
 }
 
 templ Homepage() {
@@ -87,7 +93,7 @@ templ Homepage() {
 					>
 						Tyler Smith
 					</a>
-					TODO: ADD DATE
+					{ currentYear() }
 				</div>
 				<div>
 					<a href="/privacy-policy" class="text-pink-500">
