@@ -1,5 +1,9 @@
 package homepage
 
+import (
+	"bakersfieldtechnology.com/components"
+)
+
 type service struct {
 	Name string
 	Icon any
@@ -8,6 +12,7 @@ type service struct {
 var services = []service{
 	{Name: "Web development", Icon: nil},
 	{Name: "Mobile development", Icon: nil},
+	{Name: "Custom applications", Icon: nil},
 	{Name: "Data automation", Icon: nil},
 	{Name: "Website design", Icon: nil},
 	{Name: "Website audits", Icon: nil},
@@ -46,4 +51,46 @@ templ iconWrapper() {
 }
 
 templ Services() {
+	<div class="bg-pink-50 pt-12 pb-16">
+		@components.Container() {
+			<h2 class="text-pink-600 text-5xl font-black mb-6 text-center">
+				Services
+			</h2>
+			<div
+				class="
+					prose text-center text-gray-700 font-light mb-6 
+					text-2xl px-6
+					sm:text-3xl sm:px-8
+				"
+			>
+				<p>
+					<strong class="font-normal">Bakersfield Technology</strong>'s
+					services include:
+				</p>
+			</div>
+		}
+		<ul
+			class="
+				grid pt-6 mx-auto gap-6 px-8
+				xs:grid-cols-2 xs:px-4
+				md:max-w-3xl md:grid-cols-4
+				xl:max-w-7xl 
+			"
+		>
+			for _, service := range services {
+				<li class="flex">
+					@components.FadeIn() {
+						@serviceComponent() {
+							@iconWrapper() {
+								service.Icon
+							}
+							@serviceName() {
+								{ service.Name }
+							}
+						}
+					}
+				</li>
+			}
+		</ul>
+	</div>
 }

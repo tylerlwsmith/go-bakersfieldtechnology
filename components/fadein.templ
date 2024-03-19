@@ -1,14 +1,12 @@
 package components
 
-templ Fadein(id string) {
+templ FadeIn() {
 	<div
-		id={id}
-		class="transform-gpu transition ease-out duration-300"
+		class="transform-gpu transition ease-out duration-300 w-full flex items-stretch"
 		data-fadein-show="translate-x-0 opacity-100"
 		data-fadein-hide="translate-x-6 opacity-0"
 		data-fadein-state="hide"
 	>
 		{ children... }
 	</div>
-
 }

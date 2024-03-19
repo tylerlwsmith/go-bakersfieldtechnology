@@ -1,35 +1,36 @@
 package homepage
 
 import (
+	"fmt"
 	"bakersfieldtechnology.com/components"
 )
 
 type pageSection struct {
 	Component func() templ.Component
 	MenuTitle string
-	ID string
+	ID        string
 }
 
 var pageSections = []pageSection{
 	{
 		Component: Services,
 		MenuTitle: "Services",
-		ID: "services",
+		ID:        "services",
 	},
 	{
 		Component: Technologies,
 		MenuTitle: "Technologies",
-		ID: "technologies",
+		ID:        "technologies",
 	},
 	{
 		Component: WhoAmI,
 		MenuTitle: "About",
-		ID: "about",
+		ID:        "about",
 	},
 	{
 		Component: Contact,
 		MenuTitle: "Contact",
-		ID: "contact",
+		ID:        "contact",
 	},
 }
 
@@ -42,12 +43,12 @@ templ Homepage() {
 					focus-within:not-sr-only focus-within:fixed
 				"
 			>
-				<scroll-link
+				<a
 					href="${pageSections[0].id}"
 					class="py-2 px-5 bg-pink-600"
 				>
 					Skip To Content
-				</scroll-link>
+				</a>
 			</span>
 			<nav
 				class="
@@ -59,27 +60,24 @@ templ Homepage() {
 				<ul class="flex justify-end">
 					for _, section := range pageSections {
 						<li class="mx-4">
-							<scroll-link
+							<a
 								class="border-b border-transparent hover:border-white transition-all p-1.5"
-								href="#${section.ID}"
+								href={ templ.SafeURL(fmt.Sprintf("#%v", section.ID)) }
 							>
-								{section.MenuTitle}
-							</scroll-link>
+								{ section.MenuTitle }
+							</a>
 						</li>
 					}
 				</ul>
 			</nav>
-
 			<main>
 				@Hero()
-
 				for _, section := range pageSections {
-					<section id={section.ID} class="bg-white">
+					<section id={ section.ID } class="bg-white">
 						@section.Component()
 					</section>
 				}
 			</main>
-
 			<footer class="bg-gray-900 px-10 py-4 text-gray-300 text-center text-md flex justify-between">
 				<div>
 					©
