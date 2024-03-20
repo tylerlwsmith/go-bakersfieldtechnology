@@ -18,6 +18,14 @@ The templ watcher currently has issues, but once they are resolved the water can
 templ generate --watch --proxy="http://localhost:3005" --cmd="go run ."
 ```
 
+## Building
+
+Run the following command to build the project.
+
+```sh
+npm run build && templ generate && go build -o bakersfield-technology
+```
+
 ## Router
 
 I'm using [Echo](https://echo.labstack.com/) for routing on this project because I want to try something I haven't used, Echo's error handling looks simpler than `net/http`-compatible libraries, it has comprehensive docs, and Primeagen uses it in his Go repos 🤷‍♂️

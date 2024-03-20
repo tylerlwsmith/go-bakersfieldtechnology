@@ -28,3 +28,7 @@ assets/dist
 # Generated templ files
 *_templ.go
 *_templ.txt
+
+# Generated binary
+bakersfield-technology
+
