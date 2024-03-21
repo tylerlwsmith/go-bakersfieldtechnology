@@ -8,11 +8,12 @@ $offset-min-width: 300px;
   bottom: 0;
   left: 0;
   right: 0;
-  background: url("/thumbs-up-tyler-cropped.png") left bottom / 120px no-repeat;
+  background: url("../images/thumbs-up-tyler-cropped.png") left bottom / 120px
+    no-repeat;
   transform: scaleX(-1);
   @media (min-width: theme("screens.lg")) {
-    background: url("/thumbs-up-tyler-cropped.png") no-repeat bottom left /
-      contain;
+    background: url("../images/thumbs-up-tyler-cropped.png") no-repeat bottom
+      left / contain;
     transform: scaleX(1);
   }
 }
