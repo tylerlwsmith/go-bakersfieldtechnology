@@ -17,5 +17,7 @@ func main() {
 	app.GET("/", func(c echo.Context) error {
 		return components.Render(c, http.StatusOK, homepage.Homepage())
 	})
+
+	app.GET("*", echo.WrapHandler(http.StripPrefix("", assets.PublicFiles)))
 	app.Logger.Fatal(app.Start(":3005"))
 }
