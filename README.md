@@ -18,6 +18,10 @@ The templ watcher currently has issues, but once they are resolved the water can
 templ generate --watch --proxy="http://localhost:3005" --cmd="go run ."
 ```
 
+## Build tags in Neovim
+
+I'm not sure exactly how to make `gopls` work with Go build tags in Neovim, but maybe when I understand a little bit more about Neovim [this Discourse dicussion](https://neovim.discourse.group/t/gopls-settings-buildflags/790/10) will make more sense.
+
 ## Building
 
 Run the following command to build the project.
