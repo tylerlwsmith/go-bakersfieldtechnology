@@ -18,6 +18,8 @@ func main() {
 		return components.Render(c, http.StatusOK, homepage.Homepage())
 	})
 
+	// TODO: should I export a handler for public files? There would be more
+	// symmetry with the AssetHanlder if I did.
 	app.GET("/*", echo.WrapHandler(http.FileServer(http.FS(assets.PublicFiles))))
 	app.Logger.Fatal(app.Start(":3005"))
 }
