@@ -20,7 +20,7 @@ func init() {
 		log.Fatal(err)
 	}
 
-	PublicFiles = os.DirFS(dir + "/public")
+	PublicFiles = os.DirFS(dir + "/assets/public")
 
 	AssetsHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(404)
