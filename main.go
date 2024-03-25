@@ -18,6 +18,6 @@ func main() {
 		return components.Render(c, http.StatusOK, homepage.Homepage())
 	})
 
-	app.GET("*", echo.WrapHandler(http.StripPrefix("", assets.PublicFiles)))
+	app.GET("/*", echo.WrapHandler(http.FileServer(http.FS(assets.PublicFiles))))
 	app.Logger.Fatal(app.Start(":3005"))
 }

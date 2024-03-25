@@ -15,7 +15,8 @@ import (
 var assetFiles embed.FS
 
 //go:embed public
-var PublicFiles embed.FS
+var publicFiles embed.FS
+var PublicFiles fs.FS
 
 var AssetsHandler http.Handler
 
@@ -39,12 +40,17 @@ func init() {
 	}
 
 	log.Print("using embed mode")
-	fsys, err := fs.Sub(assetFiles, "dist/public")
+	assetFsys, err := fs.Sub(assetFiles, "dist/public")
 	if err != nil {
 		panic(err)
 	}
 
-	AssetsHandler = http.FileServer(http.FS(fsys))
+	AssetsHandler = http.FileServer(http.FS(assetFsys))
+
+	PublicFiles, err = fs.Sub(publicFiles, "public")
+	if err != nil {
+		panic(err)
+	}
 }
 
 func Get(src string) (resolved string, err error) {
