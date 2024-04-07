@@ -19,7 +19,7 @@ func main() {
 	})
 
 	// TODO: should I export a handler for public files? There would be more
-	// symmetry with the AssetHanlder if I did.
+	// symmetry with the AssetHandler if I did.
 	app.GET("/*", echo.WrapHandler(http.FileServer(http.FS(assets.PublicFiles))))
 	app.Logger.Fatal(app.Start(":3005"))
 }
