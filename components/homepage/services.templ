@@ -58,7 +58,7 @@ templ Services() {
 			</h2>
 			<div
 				class="
-					prose text-center text-gray-700 font-light mb-6 
+					prose text-center text-gray-700 font-light mb-6
 					text-2xl px-6
 					sm:text-3xl sm:px-8
 				"
@@ -74,20 +74,22 @@ templ Services() {
 				grid pt-6 mx-auto gap-6 px-8
 				xs:grid-cols-2 xs:px-4
 				md:max-w-3xl md:grid-cols-4
-				xl:max-w-7xl 
+				xl:max-w-7xl
 			"
 		>
 			for _, service := range services {
-				<li class="flex">
+				<li>
 					@components.FadeIn() {
-						@serviceComponent() {
-							@iconWrapper() {
-								service.Icon
+						<div class="flex">
+							@serviceComponent() {
+								@iconWrapper() {
+									service.Icon
+								}
+								@serviceName() {
+									{ service.Name }
+								}
 							}
-							@serviceName() {
-								{ service.Name }
-							}
-						}
+						</div>
 					}
 				</li>
 			}
