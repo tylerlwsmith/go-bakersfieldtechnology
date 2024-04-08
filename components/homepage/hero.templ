@@ -1,19 +1,6 @@
 package homepage
 
-templ fadeIn() {
-	<div class="group fade-in fade-in--start">
-		<div
-			class="
-				transform-gpu transition ease-out duration-300
-				motion-reduce:!opacity-100 motion-reduce:!translate-x-0
-				group-[.fade-in--start]:translate-x-6 group-[.fade-in--start]:opacity-0
-				group-[.fade-in--end]:translate-x-0 group-[.fade-in--end]:opacity-100
-			"
-		>
-			{ children... }
-		</div>
-	</div>
-}
+import "bakersfieldtechnology.com/components"
 
 templ Hero() {
 	<header
@@ -27,7 +14,7 @@ templ Hero() {
 		@insetBackground()
 		@centeredContainer() {
 			@constrainedWidth() {
-				@fadeIn() {
+				@components.FadeIn() {
 					<h1
 						class="
 							font-black tracking-wide mb-8
@@ -39,12 +26,12 @@ templ Hero() {
 						Bakersfield Technology
 					</h1>
 				}
-				@fadeIn() {
+				@components.FadeIn() {
 					<p class="text-lg sm:text-2xl font-light tracking-wider mb-14">
 						Building technology for Bakersfield's digital needs
 					</p>
 				}
-				@fadeIn() {
+				@components.FadeIn() {
 					<a
 						href="#services"
 						class="
