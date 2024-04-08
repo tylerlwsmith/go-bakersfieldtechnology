@@ -1,7 +1,4 @@
 export function initHeroFadeInAnimation() {
-  // if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  //   return;
-  // }
   const fadeInItems = document.querySelectorAll(".fade-in");
   let itemIndex = 0;
 
@@ -14,7 +11,8 @@ export function initHeroFadeInAnimation() {
         return;
       }
 
-      fadeInItems[itemIndex].classList.add("hidden");
+      fadeInItems[itemIndex].classList.remove("fade-in--start");
+      fadeInItems[itemIndex].classList.add("fade-in--end");
       itemIndex++;
     }, 100);
   }, 100);

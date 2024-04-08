@@ -1,5 +1,20 @@
 package homepage
 
+templ fadeIn() {
+	<div class="group fade-in fade-in--start">
+		<div
+			class="
+				transform-gpu transition ease-out duration-300
+				motion-reduce:!opacity-100 motion-reduce:!translate-x-0
+				group-[.fade-in--start]:translate-x-6 group-[.fade-in--start]:opacity-0
+				group-[.fade-in--end]:translate-x-0 group-[.fade-in--end]:opacity-100
+			"
+		>
+			{ children... }
+		</div>
+	</div>
+}
+
 templ Hero() {
 	<header
 		class="
@@ -12,7 +27,7 @@ templ Hero() {
 		@insetBackground()
 		@centeredContainer() {
 			@constrainedWidth() {
-				<div class="fade-in">
+				@fadeIn() {
 					<h1
 						class="
 							font-black tracking-wide mb-8
@@ -23,13 +38,13 @@ templ Hero() {
 					>
 						Bakersfield Technology
 					</h1>
-				</div>
-				<div class="fade-in">
+				}
+				@fadeIn() {
 					<p class="text-lg sm:text-2xl font-light tracking-wider mb-14">
 						Building technology for Bakersfield's digital needs
 					</p>
-				</div>
-				<div class="fade-in">
+				}
+				@fadeIn() {
 					<a
 						href="#services"
 						class="
@@ -41,7 +56,7 @@ templ Hero() {
 					>
 						Learn More
 					</a>
-				</div>
+				}
 			}
 		}
 	</header>
@@ -55,9 +70,7 @@ templ insetBackground() {
 }
 
 templ centeredContainer() {
-	<div
-		class="max-w-full w-[1000px] mx-auto relative z-10"
-	>
+	<div class="max-w-full w-[1000px] mx-auto relative z-10">
 		{ children... }
 	</div>
 }
