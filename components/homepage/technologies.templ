@@ -26,10 +26,7 @@ templ listTitle() {
 }
 
 templ list() {
-	<ul
-		class={ `text-gray-500 mb-6 ${class}` }
-		style="column-count: 2"
-	>
+	<ul class="text-gray-500 mb-6 columns-2">
 		{ children... }
 	</ul>
 }
@@ -60,7 +57,7 @@ templ Technologies() {
 				</p>
 			</div>
 			@listTitle() {
-				Tools 
+				Tools
 			}
 			@list() {
 				for _, tool := range tools {
@@ -70,7 +67,7 @@ templ Technologies() {
 				}
 			}
 			@listTitle() {
-				Languages 
+				Languages
 			}
 			@list() {
 				for _, language := range languages {
