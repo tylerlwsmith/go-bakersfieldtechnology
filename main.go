@@ -2,6 +2,8 @@ package main
 
 import (
 	"net/http"
+	"os"
+	"strings"
 
 	"github.com/labstack/echo/v4"
 
@@ -21,5 +23,12 @@ func main() {
 	// TODO: should I export a handler for public files? There would be more
 	// symmetry with the AssetHandler if I did.
 	app.GET("/*", echo.WrapHandler(http.FileServer(http.FS(assets.PublicFiles))))
-	app.Logger.Fatal(app.Start(":3005"))
+
+	port, ok := os.LookupEnv("APP_PORT")
+	if !ok {
+		port = "3000"
+	} else {
+		port = strings.Trim(port, " ")
+	}
+	app.Logger.Fatal(app.Start(":" + port))
 }
