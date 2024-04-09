@@ -32,3 +32,6 @@ assets/dist
 # Generated binary
 bakersfield-technology
 
+# Copied NPM assets
+assets/public/heroicons/*
+!assets/public/heroicons/.keep
