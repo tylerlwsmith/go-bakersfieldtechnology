@@ -1,10 +1,10 @@
 package homepage
 
 import (
-	"bakersfieldtechnology.com/assets"
-	"bakersfieldtechnology.com/components"
 	"log"
 	"io/fs"
+	"bakersfieldtechnology.com/assets"
+	"bakersfieldtechnology.com/components"
 )
 
 type service struct {
@@ -85,6 +85,7 @@ templ Services() {
 			</div>
 		}
 		<ul
+			data-component="services-list"
 			class="
 				grid pt-6 mx-auto gap-6 px-8
 				xs:grid-cols-2 xs:px-4

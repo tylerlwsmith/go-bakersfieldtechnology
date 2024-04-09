@@ -3,7 +3,6 @@ export function triggerFadeInGroup(elements: NodeListOf<Element>) {
 
   setTimeout(function delayAnimationStart() {
     const visibilityInterval = setInterval(function showItems() {
-      console.log("looping");
       if (itemIndex > elements.length - 1) {
         clearInterval(visibilityInterval);
         return;
