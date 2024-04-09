@@ -49,10 +49,7 @@ templ Homepage() {
 					focus-within:not-sr-only focus-within:fixed
 				"
 			>
-				<a
-					href="${pageSections[0].id}"
-					class="py-2 px-5 bg-pink-600"
-				>
+				<a href="#main" class="py-2 px-5 bg-pink-600">
 					Skip To Content
 				</a>
 			</span>
@@ -78,19 +75,18 @@ templ Homepage() {
 			</nav>
 			<main>
 				@Hero()
-				for _, section := range pageSections {
-					<section id={ section.ID } class="bg-white">
-						@section.Component()
-					</section>
-				}
+				<main id="main">
+					for _, section := range pageSections {
+						<section id={ section.ID } class="bg-white">
+							@section.Component()
+						</section>
+					}
+				</main>
 			</main>
 			<footer class="bg-gray-900 px-10 py-4 text-gray-300 text-center text-md flex justify-between">
 				<div>
 					©
-					<a
-						href="https://deadhandmedia.com/"
-						class="text-pink-500 underline"
-					>
+					<a href="https://deadhandmedia.com/" class="text-pink-500 underline">
 						Tyler Smith
 					</a>
 					{ currentYear() }
