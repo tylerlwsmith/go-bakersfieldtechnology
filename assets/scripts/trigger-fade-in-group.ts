@@ -9,8 +9,7 @@ export function triggerFadeInGroup(elements: NodeListOf<Element>) {
         return;
       }
 
-      elements[itemIndex].classList.remove("fade-in--start");
-      elements[itemIndex].classList.add("fade-in--end");
+      elements[itemIndex].setAttribute("data-visible", "true");
       itemIndex++;
     }, 100);
   }, 100);

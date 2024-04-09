@@ -1,16 +1,16 @@
 package components
 
 templ FadeIn() {
-	<div class="group fade-in fade-in--start">
-		<div
-			class="
-				transform-gpu transition ease-out duration-300
-				motion-reduce:!opacity-100 motion-reduce:!translate-x-0
-				group-[.fade-in--start]:translate-x-6 group-[.fade-in--start]:opacity-0
-				group-[.fade-in--end]:translate-x-0 group-[.fade-in--end]:opacity-100
-			"
-		>
-			{ children... }
-		</div>
+	<div
+		data-component="fade-in"
+		data-visible="false"
+		class="
+			transform-gpu transition ease-out duration-300
+			motion-reduce:!opacity-100 motion-reduce:!translate-x-0
+			data-[visible=false]:translate-x-6 data-[visible=false]:opacity-0
+			data-[visible=true]:translate-x-0 data-[visible=true]:opacity-100
+		"
+	>
+		{ children... }
 	</div>
 }
