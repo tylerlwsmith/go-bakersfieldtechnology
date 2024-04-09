@@ -1,23 +1,38 @@
 package homepage
 
 import (
+	"bakersfieldtechnology.com/assets"
 	"bakersfieldtechnology.com/components"
+	"log"
+	"io/fs"
 )
 
 type service struct {
 	Name string
-	Icon any
+	Icon string
 }
 
 var services = []service{
-	{Name: "Web development", Icon: nil},
-	{Name: "Mobile development", Icon: nil},
-	{Name: "Custom applications", Icon: nil},
-	{Name: "Data automation", Icon: nil},
-	{Name: "Website design", Icon: nil},
-	{Name: "Website audits", Icon: nil},
-	{Name: "Application maintenance", Icon: nil},
-	{Name: "White-label development", Icon: nil},
+	{Name: "Web development", Icon: "globe-alt.svg"},
+	{Name: "Mobile development", Icon: "device-mobile.svg"},
+	{Name: "Custom applications", Icon: "template.svg"},
+	{Name: "Data automation", Icon: "sort-descending.svg"},
+	{Name: "Website design", Icon: "desktop-computer.svg"},
+	{Name: "Website audits", Icon: "clipboard-list.svg"},
+	{Name: "Application maintenance", Icon: "exclamation.svg"},
+	{Name: "White-label development", Icon: "light-bulb.svg"},
+}
+
+var icons = make(map[string]string)
+
+func init() {
+	for _, service := range services {
+		f, err := fs.ReadFile(assets.PublicFiles, "heroicons/"+service.Icon)
+		if err != nil {
+			log.Fatal(err)
+		}
+		icons[service.Icon] = string(f)
+	}
 }
 
 templ serviceComponent() {
@@ -45,7 +60,7 @@ templ serviceName() {
 }
 
 templ iconWrapper() {
-	<div class="h-10 mb-1">
+	<div class="h-10 mb-1 w-8">
 		{ children... }
 	</div>
 }
@@ -83,7 +98,7 @@ templ Services() {
 						<div class="flex">
 							@serviceComponent() {
 								@iconWrapper() {
-									service.Icon
+									@templ.Raw(icons[service.Icon])
 								}
 								@serviceName() {
 									{ service.Name }
