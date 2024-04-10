@@ -9,8 +9,11 @@ import (
 	"os"
 )
 
+// const AssetEnv = "development"
+
 var AssetsHandler http.Handler
 var PublicFiles fs.FS
+var ContentFiles fs.FS
 var viteOrigin string = "http://localhost:5173"
 
 func init() {
@@ -21,6 +24,7 @@ func init() {
 	}
 
 	PublicFiles = os.DirFS(dir + "/assets/public")
+	ContentFiles = os.DirFS(dir + "/assets/content")
 
 	AssetsHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(404)

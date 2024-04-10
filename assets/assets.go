@@ -11,12 +11,15 @@ import (
 	"net/http"
 )
 
+// const AssetEnv = "production"
+
 //go:embed dist
 var assetFiles embed.FS
 
-//go:embed public
-var publicFiles embed.FS
+//go:embed public content
+var privateEmbeds embed.FS
 var PublicFiles fs.FS
+var ContentFiles fs.FS
 
 var AssetsHandler http.Handler
 
@@ -47,7 +50,12 @@ func init() {
 
 	AssetsHandler = http.FileServer(http.FS(assetFsys))
 
-	PublicFiles, err = fs.Sub(publicFiles, "public")
+	PublicFiles, err = fs.Sub(privateEmbeds, "public")
+	if err != nil {
+		panic(err)
+	}
+
+	ContentFiles, err = fs.Sub(privateEmbeds, "content")
 	if err != nil {
 		panic(err)
 	}
