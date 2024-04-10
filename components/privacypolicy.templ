@@ -1,0 +1,31 @@
+package components
+
+import (
+	"log"
+
+	"github.com/yuin/goldmark"
+
+	"bakersfieldtechnology.com/assets"
+)
+
+var content bytes.Buffer
+
+func init() {
+	f, err := assets.ContentFiles.Open("privacy-policy.md")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	b, err := io.ReadAll(f)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	goldmark.Convert(b, &content)
+}
+
+templ PrivacyPolicy() {
+	@Layout() {
+		@templ.Raw(content.String())
+	}
+}
