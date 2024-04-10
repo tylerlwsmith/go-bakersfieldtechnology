@@ -10,15 +10,13 @@
     "postinstall": "cp node_modules/heroicons/outline/{globe-alt.svg,device-mobile.svg,template.svg,sort-descending.svg,desktop-computer.svg,clipboard-list.svg,exclamation.svg,light-bulb.svg} assets/public/heroicons"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.17",
+    "heroicons": "^1.0.4",
     "postcss": "^8.4.35",
     "sass": "^1.71.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
-  },
-  "dependencies": {
-    "@tailwindcss/typography": "^0.5.10",
-    "heroicons": "^1.0.4"
   }
 }
