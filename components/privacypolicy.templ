@@ -27,7 +27,9 @@ func init() {
 templ PrivacyPolicy() {
 	@Layout() {
 		@Container() {
-			@templ.Raw(content.String())
+			<main class="prose">
+				@templ.Raw(content.String())
+			</main>
 		}
 	}
 }
