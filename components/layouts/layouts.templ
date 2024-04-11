@@ -1,4 +1,4 @@
-package components
+package layouts
 
 import (
 	"bakersfieldtechnology.com/assets"
@@ -28,23 +28,14 @@ templ Layout() {
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<title>Bakersfield Technology: Website and app development</title>
-			<meta
-				name="description"
-				content="Building technology for Bakersfield's digital needs."
-			/>
+			<meta name="description" content="Building technology for Bakersfield's digital needs."/>
 			<link rel="icon" href="favicon.svg" type="image/x-icon"/>
 			<meta property="og:site_name" content="Bakersfield Technology"/>
-			<meta
-				property="og:description"
-				content="Building technology for Bakersfield's digital needs."
-			/>
+			<meta property="og:description" content="Building technology for Bakersfield's digital needs."/>
 			<meta property="og:locale" content="en_US"/>
 			<meta property="og:title" content="Bakersfield Technology"/>
 			<meta property="og:url" content="https://bakersfieldtechnology.com"/>
-			<meta
-				property="og:image"
-				content="https://bakersfieldtechnology.com/og-image.jpg"
-			/>
+			<meta property="og:image" content="https://bakersfieldtechnology.com/og-image.jpg"/>
 			<link rel="preconnect" href="https://fonts.googleapis.com"/>
 			<link rel="preconnect" href="https://fonts.gstatic.com"/>
 			<link
@@ -61,10 +52,4 @@ templ Layout() {
 			</div>
 		</body>
 	</html>
-}
-
-templ Homepage() {
-	@Layout() {
-		<h1>Homepage</h1>
-	}
 }

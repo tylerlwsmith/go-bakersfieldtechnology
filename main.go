@@ -10,6 +10,7 @@ import (
 	"bakersfieldtechnology.com/assets"
 	"bakersfieldtechnology.com/components"
 	"bakersfieldtechnology.com/components/homepage"
+	"bakersfieldtechnology.com/components/privacypolicy"
 )
 
 func main() {
@@ -21,7 +22,7 @@ func main() {
 	})
 
 	app.GET("/privacy-policy/", func(c echo.Context) error {
-		return components.Render(c, http.StatusOK, components.PrivacyPolicy())
+		return components.Render(c, http.StatusOK, privacypolicy.PrivacyPolicy())
 	})
 
 	// TODO: should I export a handler for public files? There would be more

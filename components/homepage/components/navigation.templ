@@ -1,0 +1,62 @@
+package components
+
+import (
+	"fmt"
+)
+
+type PageSection struct {
+	Component func() templ.Component
+	MenuTitle string
+	ID        string
+}
+
+var PageSections = []PageSection{
+	{
+		Component: Services,
+		MenuTitle: "Services",
+		ID:        "services",
+	},
+	{
+		Component: Technologies,
+		MenuTitle: "Technologies",
+		ID:        "technologies",
+	},
+	{
+		Component: WhoAmI,
+		MenuTitle: "About",
+		ID:        "about",
+	},
+	{
+		Component: Contact,
+		MenuTitle: "Contact",
+		ID:        "contact",
+	},
+}
+
+type NavigationProps struct {
+	TailwindColorClass    string
+	TailwindPositionClass string
+}
+
+templ Navigation(tailwindLinkColorClass string, tailwindPositionClass string) {
+	<nav
+		class={ `
+			left-0 right-0 top-0 p-8 z-10
+			hidden
+			sm:block
+		`, tailwindLinkColorClass, tailwindPositionClass }
+	>
+		<ul class="flex justify-end">
+			for _, section := range PageSections {
+				<li class={ "mx-4" }>
+					<a
+						class="border-b border-transparent hover:border-white transition-all p-1.5"
+						href={ templ.SafeURL(fmt.Sprintf("/#%v", section.ID)) }
+					>
+						{ section.MenuTitle }
+					</a>
+				</li>
+			}
+		</ul>
+	</nav>
+}

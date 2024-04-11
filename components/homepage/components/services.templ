@@ -1,10 +1,10 @@
-package homepage
+package components
 
 import (
 	"log"
 	"io/fs"
 	"bakersfieldtechnology.com/assets"
-	"bakersfieldtechnology.com/components"
+	"bakersfieldtechnology.com/components/shared"
 )
 
 type service struct {
@@ -67,7 +67,7 @@ templ iconWrapper() {
 
 templ Services() {
 	<div class="bg-pink-50 pt-12 pb-16">
-		@components.Container() {
+		@shared.Container() {
 			<h2 class="text-pink-600 text-5xl font-black mb-6 text-center">
 				Services
 			</h2>
@@ -95,7 +95,7 @@ templ Services() {
 		>
 			for _, service := range services {
 				<li>
-					@components.FadeIn() {
+					@shared.FadeIn() {
 						<div class="flex">
 							@serviceComponent() {
 								@iconWrapper() {

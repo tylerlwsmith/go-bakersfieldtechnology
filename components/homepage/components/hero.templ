@@ -1,6 +1,6 @@
-package homepage
+package components
 
-import "bakersfieldtechnology.com/components"
+import "bakersfieldtechnology.com/components/shared"
 
 templ Hero() {
 	<header
@@ -15,7 +15,7 @@ templ Hero() {
 		@insetBackground()
 		@centeredContainer() {
 			@constrainedWidth() {
-				@components.FadeIn() {
+				@shared.FadeIn() {
 					<h1
 						class="
 							font-black tracking-wide mb-8
@@ -27,12 +27,12 @@ templ Hero() {
 						Bakersfield Technology
 					</h1>
 				}
-				@components.FadeIn() {
+				@shared.FadeIn() {
 					<p class="text-lg sm:text-2xl font-light tracking-wider mb-14">
 						Building technology for Bakersfield's digital needs
 					</p>
 				}
-				@components.FadeIn() {
+				@shared.FadeIn() {
 					<a
 						href="#services"
 						class="

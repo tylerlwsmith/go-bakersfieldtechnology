@@ -1,47 +1,18 @@
 package homepage
 
 import (
-	"fmt"
 	"time"
 
-	"bakersfieldtechnology.com/components"
+	"bakersfieldtechnology.com/components/layouts"
+	"bakersfieldtechnology.com/components/homepage/components"
 )
-
-type pageSection struct {
-	Component func() templ.Component
-	MenuTitle string
-	ID        string
-}
-
-var pageSections = []pageSection{
-	{
-		Component: Services,
-		MenuTitle: "Services",
-		ID:        "services",
-	},
-	{
-		Component: Technologies,
-		MenuTitle: "Technologies",
-		ID:        "technologies",
-	},
-	{
-		Component: WhoAmI,
-		MenuTitle: "About",
-		ID:        "about",
-	},
-	{
-		Component: Contact,
-		MenuTitle: "Contact",
-		ID:        "contact",
-	},
-}
 
 func currentYear() string {
 	return time.Now().Format("2006")
 }
 
 templ Homepage() {
-	@components.Layout() {
+	@layouts.Layout() {
 		<div class="relative">
 			<span
 				class="
@@ -53,30 +24,11 @@ templ Homepage() {
 					Skip To Content
 				</a>
 			</span>
-			<nav
-				class="
-					absolute left-0 right-0 top-0 text-white p-8 z-10
-					hidden
-					sm:block
-				"
-			>
-				<ul class="flex justify-end">
-					for _, section := range pageSections {
-						<li class="mx-4">
-							<a
-								class="border-b border-transparent hover:border-white transition-all p-1.5"
-								href={ templ.SafeURL(fmt.Sprintf("#%v", section.ID)) }
-							>
-								{ section.MenuTitle }
-							</a>
-						</li>
-					}
-				</ul>
-			</nav>
+			@components.Navigation("text-white", "absolute")
 			<main>
-				@Hero()
+				@components.Hero()
 				<main id="main">
-					for _, section := range pageSections {
+					for _, section := range components.PageSections {
 						<section id={ section.ID } class="bg-white">
 							@section.Component()
 						</section>

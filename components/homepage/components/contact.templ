@@ -1,12 +1,10 @@
-package homepage
+package components
 
-import (
-	"bakersfieldtechnology.com/components"
-)
+import "bakersfieldtechnology.com/components/shared"
 
 templ Contact() {
 	<div class="bg-pink-50 pt-14 pb-16 px-6">
-		@components.Container() {
+		@shared.Container() {
 			<div>
 				<h2 class="text-pink-600 text-5xl font-black mb-5 text-center sr-only">
 					Contact
@@ -30,7 +28,7 @@ templ Contact() {
 						target="_blank"
 						rel="noopener"
 						class="
-							inline-block tracking-widest border 
+							inline-block tracking-widest border
 							border-pink-600 bg-pink-600 text-white rounded-full
 							hover:bg-white hover:border-pink-600 hover:text-pink-600  transition
 							font-normal

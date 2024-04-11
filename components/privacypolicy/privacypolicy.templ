@@ -1,4 +1,4 @@
-package components
+package privacypolicy
 
 import (
 	"log"
@@ -6,6 +6,9 @@ import (
 	"github.com/yuin/goldmark"
 
 	"bakersfieldtechnology.com/assets"
+	"bakersfieldtechnology.com/components/homepage/components"
+	"bakersfieldtechnology.com/components/shared"
+	"bakersfieldtechnology.com/components/layouts"
 )
 
 var content bytes.Buffer
@@ -25,8 +28,9 @@ func init() {
 }
 
 templ PrivacyPolicy() {
-	@Layout() {
-		@Container() {
+	@layouts.Layout() {
+		@components.Navigation("text-black", "relative")
+		@shared.Container() {
 			<main class="prose">
 				@templ.Raw(content.String())
 			</main>
