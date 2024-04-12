@@ -1,15 +1,9 @@
 package homepage
 
 import (
-	"time"
-
 	"bakersfieldtechnology.com/components/layouts"
 	"bakersfieldtechnology.com/components/homepage/components"
 )
-
-func currentYear() string {
-	return time.Now().Format("2006")
-}
 
 templ Homepage() {
 	@layouts.Layout() {
@@ -25,7 +19,7 @@ templ Homepage() {
 				</a>
 			</span>
 			@components.Navigation("text-white", "absolute")
-			<main>
+			<div>
 				@components.Hero()
 				<main id="main">
 					for _, section := range components.PageSections {
@@ -34,21 +28,8 @@ templ Homepage() {
 						</section>
 					}
 				</main>
-			</main>
-			<footer class="bg-gray-900 px-10 py-4 text-gray-300 text-center text-md flex justify-between">
-				<div>
-					©
-					<a href="https://deadhandmedia.com/" class="text-pink-500 underline">
-						Tyler Smith
-					</a>
-					{ currentYear() }
-				</div>
-				<div>
-					<a href="/privacy-policy" class="text-pink-500">
-						Privacy Policy
-					</a>
-				</div>
-			</footer>
+			</div>
+			@components.Footer()
 		</div>
 	}
 }

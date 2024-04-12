@@ -40,17 +40,15 @@ type NavigationProps struct {
 
 templ Navigation(tailwindLinkColorClass string, tailwindPositionClass string) {
 	<nav
-		class={ `
-			left-0 right-0 top-0 p-8 z-10
-			hidden
-			sm:block
-		`, tailwindLinkColorClass, tailwindPositionClass }
+		class={ `flex left-0 right-0 top-0 py-8 px-4 md:px-8 z-10 items-center`, tailwindLinkColorClass,
+	tailwindPositionClass }
 	>
-		<ul class="flex justify-end">
+		<a href="/" class="text-xl" style='font-family: "Montserrat", sans-serif;'>Bakersfield Technology</a>
+		<ul class="justify-end ml-auto hidden md:flex">
 			for _, section := range PageSections {
 				<li class={ "mx-4" }>
 					<a
-						class="border-b border-transparent hover:border-white transition-all p-1.5"
+						class="border-b border-transparent hover:border-inherit transition-all p-1.5"
 						href={ templ.SafeURL(fmt.Sprintf("/#%v", section.ID)) }
 					>
 						{ section.MenuTitle }
