@@ -1,0 +1,31 @@
+package errorpage
+
+import (
+	"bakersfieldtechnology.com/components/homepage/components"
+	"bakersfieldtechnology.com/components/layouts"
+	"bakersfieldtechnology.com/components/shared"
+)
+
+templ NotFound() {
+	@layouts.Layout() {
+		@components.Navigation("text-pink-700", "relative")
+		@shared.Container() {
+			<main id="main" class="justify-center items-center mx-4 mt-16 mb-28">
+				<h1>Not found</h1>
+			</main>
+		}
+		@components.Footer()
+	}
+}
+
+templ ServerError() {
+	@layouts.Layout() {
+		@components.Navigation("text-pink-700", "relative")
+		@shared.Container() {
+			<main id="main" class="justify-center items-center mx-4 mt-16 mb-28">
+				<h1>Error</h1>
+			</main>
+		}
+		@components.Footer()
+	}
+}
