@@ -26,11 +26,13 @@ func Render(ctx echo.Context, statusCode int, t templ.Component) error {
 
 	ctx.Response().Header().Set(echo.HeaderContentType, echo.MIMETextHTML)
 	err := t.Render(ctx.Request().Context(), ctx.Response().Writer)
+
+	// I feel like there should be an `else` block that sets a 500 if there is
+	// an error, but the app logs `superfluous response.WriteHeader call` when
+	// when I do that.
 	if err != nil {
 		ctx.Response().Writer.WriteHeader(statusCode)
 		b.WriteTo(ctx.Response().Writer)
-	} else {
-		ctx.Response().Writer.WriteHeader(500)
 	}
 
 	return err
