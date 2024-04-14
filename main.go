@@ -6,7 +6,6 @@ import (
 	"strings"
 
 	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
 
 	"bakersfieldtechnology.com/assets"
 	"bakersfieldtechnology.com/components"
@@ -17,9 +16,6 @@ import (
 
 func main() {
 	app := echo.New()
-	app.Use(middleware.AddTrailingSlashWithConfig(middleware.TrailingSlashConfig{
-		RedirectCode: http.StatusMovedPermanently,
-	}))
 
 	// https://echo.labstack.com/docs/error-handling#error-pages
 	customHTTPErrorHandler := func(err error, c echo.Context) {
@@ -44,6 +40,13 @@ func main() {
 
 	app.GET("/privacy-policy/", func(c echo.Context) error {
 		return components.Render(c, http.StatusOK, privacypolicy.PrivacyPolicy())
+	})
+
+	// I tried to use echo's middleware.AddTrailingSlashWithConfig, but it
+	// added a trailing slash to assets and broke URLs. Since this is the only
+	// route that needs the slash, we'll handle it manually.
+	app.GET("/privacy-policy", func(c echo.Context) error {
+		return c.Redirect(301, "/privacy-policy/")
 	})
 
 	// https://pkg.go.dev/github.com/labstack/echo/v4@v4.11.4#Echo.StaticFS
