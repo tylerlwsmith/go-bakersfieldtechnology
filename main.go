@@ -10,7 +10,7 @@ import (
 
 	"bakersfieldtechnology.com/assets"
 	"bakersfieldtechnology.com/components"
-	// "bakersfieldtechnology.com/components/errorpage"
+	"bakersfieldtechnology.com/components/errorpage"
 	"bakersfieldtechnology.com/components/homepage"
 	"bakersfieldtechnology.com/components/privacypolicy"
 )
@@ -23,18 +23,17 @@ func main() {
 
 	// https://echo.labstack.com/docs/error-handling#error-pages
 	customHTTPErrorHandler := func(err error, c echo.Context) {
-		// code := http.StatusInternalServerError
-		// if he, ok := err.(*echo.HTTPError); ok {
-		// 	code = he.Code
-		// }
+		code := http.StatusInternalServerError
+		if he, ok := err.(*echo.HTTPError); ok {
+			code = he.Code
+		}
 
-		c.HTML(404, "hello world!")
+		if code == 404 {
+			components.Render(c, 404, errorpage.NotFound())
+			return
+		}
 
-		// if(code == 404) {
-		// 	return components.Render(c, code, errorpage.NotFound())
-		// }
-		//
-		// return component.Render(c, code, errorpage.ServerError())
+		components.Render(c, code, errorpage.ServerError())
 	}
 	app.HTTPErrorHandler = customHTTPErrorHandler
 

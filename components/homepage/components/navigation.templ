@@ -43,6 +43,16 @@ templ Navigation(tailwindLinkColorClass string, tailwindPositionClass string) {
 		class={ `flex left-0 right-0 top-0 py-8 px-4 md:px-8 z-10 items-center`, tailwindLinkColorClass,
 	tailwindPositionClass }
 	>
+		<span
+			class="
+					sr-only inline-block top-8 left-5 border border-white z-20 text-white
+					focus-within:not-sr-only focus-within:fixed
+				"
+		>
+			<a href="#main" class="py-2 px-5 bg-pink-600">
+				Skip To Content
+			</a>
+		</span>
 		<a href="/" class="text-xl" style='font-family: "Montserrat", sans-serif;'>Bakersfield Technology</a>
 		<ul class="justify-end ml-auto hidden md:flex">
 			for _, section := range PageSections {

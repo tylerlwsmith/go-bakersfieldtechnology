@@ -29,12 +29,14 @@ func init() {
 
 templ PrivacyPolicy() {
 	@layouts.Layout() {
-		@components.Navigation("text-pink-700", "relative")
-		@shared.Container() {
-			<main id="main" class="prose mx-4 mt-16 mb-28 max-w-full">
-				@templ.Raw(content.String())
-			</main>
+		@shared.PageWrapper() {
+			@components.Navigation("text-pink-700", "relative")
+			@shared.Container() {
+				<main id="main" class="prose mx-4 mt-16 mb-28 max-w-full">
+					@templ.Raw(content.String())
+				</main>
+			}
+			@components.Footer()
 		}
-		@components.Footer()
 	}
 }

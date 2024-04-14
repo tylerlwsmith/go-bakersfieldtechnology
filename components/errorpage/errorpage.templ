@@ -8,24 +8,28 @@ import (
 
 templ NotFound() {
 	@layouts.Layout() {
-		@components.Navigation("text-pink-700", "relative")
-		@shared.Container() {
-			<main id="main" class="justify-center items-center mx-4 mt-16 mb-28">
-				<h1>Not found</h1>
+		@shared.PageWrapper() {
+			@components.Navigation("text-pink-700", "relative")
+			<main id="main" class="flex justify-center items-center mx-4 mt-16 mb-28">
+				@shared.Container() {
+					<h1 class="text-4xl">Not Found</h1>
+				}
 			</main>
+			@components.Footer()
 		}
-		@components.Footer()
 	}
 }
 
 templ ServerError() {
 	@layouts.Layout() {
-		@components.Navigation("text-pink-700", "relative")
-		@shared.Container() {
-			<main id="main" class="justify-center items-center mx-4 mt-16 mb-28">
-				<h1>Error</h1>
+		@shared.PageWrapper() {
+			@components.Navigation("text-pink-700", "relative")
+			<main id="main" class="flex justify-center items-center mx-4 mt-16 mb-28">
+				@shared.Container() {
+					<h1 class="text-4xl">Error</h1>
+				}
 			</main>
+			@components.Footer()
 		}
-		@components.Footer()
 	}
 }
