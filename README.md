@@ -2,17 +2,37 @@
 
 I built [bakersfieldtechnology.com](https://bakersfieldtechnology.com) using Next.js's static export feature so I could host it for free on Netlify. Using a static site prevented me from being able to embed a contact form.
 
-I'm currently rebuilding the site–not because I'm seeing contracting work in Bakersfield, but instead so I can get experience with Go, templ and Vite. I also believe that Go apps are lightweight enough that I can probably run a dozen apps on a $5/month DigitalOcean server.
+I rebuilt the site–not because I'm seeing contracting work in Bakersfield, but instead so I can get experience with Go, templ and Vite. I also believe that Go apps are lightweight enough that I can probably run a dozen apps on a $5/month DigitalOcean server.
 
 ## Developing
 
-This repo is currently using [Air](https://github.com/cosmtrek/air) for live reloading. You can start this app with the following command:
+You'll need the following on your system to build this app:
+
+- Go ([Installation](https://go.dev/doc/install))
+- Templ CLI ([Installation](https://templ.guide/quick-start/installation))
+- Air ([Installation](https://github.com/cosmtrek/air))
+- Node/NPM ([Installation](https://nodejs.org/en/download))
+
+After cloning the repo, run the following commands:
+
+```sh
+go mod tidy
+npm install
+```
+
+To build the assets during development, run the following command:
+
+```sh
+npm run dev
+```
+
+You can start the Go app with live reloading using the following command:
 
 ```sh
 air
 ```
 
-The templ watcher currently has issues, but once they are resolved the water can be run with the following command:
+The Templ watcher currently has issues, but once they are resolved the water can be run with the following command:
 
 ```sh
 templ generate --watch --proxy="http://localhost:3005" --cmd="go run ."
