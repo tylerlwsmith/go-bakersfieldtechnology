@@ -1,0 +1,13 @@
+[Unit]
+Description=Bakersfield Technology
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/srv/bakersfieldtechnology.com
+User=<username>
+Restart=always
+ExecStart=/srv/bakersfieldtechnolgy.com /srv/bakersfieldtechnology.com
+
+[Install]
+WantedBy=multi-user.target
