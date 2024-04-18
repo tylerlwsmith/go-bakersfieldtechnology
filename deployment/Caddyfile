@@ -1,0 +1,8 @@
+bakersfieldtechnolgy.com {
+	reverse_proxy :3000
+}
+
+# Handle redirects from www to non-www
+www.bakersfieldtechnology.com {
+	redir https://bakersfieldtechnology.com{uri}
+}

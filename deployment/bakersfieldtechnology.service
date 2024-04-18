@@ -1,3 +1,5 @@
+# Replace all instances of <username> with the system's user
+
 [Unit]
 Description=Bakersfield Technology
 After=network.target
