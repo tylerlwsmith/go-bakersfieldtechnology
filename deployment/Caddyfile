@@ -1,5 +1,6 @@
 bakersfieldtechnology.com {
 	reverse_proxy :3000
+	encode zstd gzip
 }
 
 # Handle redirects from www to non-www.
