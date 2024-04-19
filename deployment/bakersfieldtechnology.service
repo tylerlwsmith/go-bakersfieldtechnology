@@ -1,4 +1,4 @@
-# Replace all instances of <username> with the system's user
+# Replace <username> with the system's user
 
 [Unit]
 Description=Bakersfield Technology
@@ -6,10 +6,10 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/srv/bakersfieldtechnology.com
+WorkingDirectory=/srv/
 User=<username>
 Restart=always
-ExecStart=/srv/bakersfieldtechnolgy.com /srv/bakersfieldtechnology.com
+ExecStart=/srv/bakersfieldtechnology.com
 
 [Install]
 WantedBy=multi-user.target
