@@ -58,6 +58,8 @@ To build the project for the server, run the following command:
 npm run build && templ generate && GOOS=linux GOARCH=amd64 go build -o bakersfieldtechnology.com
 ```
 
+You'll find a unit file and Caddy file for the server in the `deployment/` directory of this project. The unit file will require some modification to tailor it to the particular server.
+
 ## Router
 
 I'm using [Echo](https://echo.labstack.com/) for routing on this project because I want to try something I haven't used, Echo's error handling looks simpler than `net/http`-compatible libraries, it has comprehensive docs, and Primeagen uses it in his Go repos 🤷‍♂️
