@@ -44,10 +44,18 @@ I'm not sure exactly how to make `gopls` work with Go build tags in Neovim, but 
 
 ## Building
 
-Run the following command to build the project.
+To build the project for the local machine, run the following command:
 
 ```sh
-npm run build && templ generate && go build -o bakersfield-technology
+npm run build && templ generate && go build -o bakersfieldtechnology.com
+```
+
+## Deploying
+
+To build the project for the server, run the following command:
+
+```sh
+npm run build && templ generate && GOOS=linux GOARCH=amd64 go build -o bakersfieldtechnology.com
 ```
 
 ## Router
