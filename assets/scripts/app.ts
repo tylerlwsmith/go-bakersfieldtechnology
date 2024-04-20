@@ -17,7 +17,7 @@ const heroSection = document.querySelector('[data-component="hero"]');
 if (heroSection !== null) {
   const heroFadeIns = heroSection.querySelectorAll(FADEIN_SELECTOR);
 
-  triggerFadeInGroup(heroFadeIns);
+  window.addEventListener("load", () => triggerFadeInGroup(heroFadeIns));
 }
 
 const servicesSection = document.querySelector(
