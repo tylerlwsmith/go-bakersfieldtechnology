@@ -1,17 +1,17 @@
 # Bakersfield Technology Go Rewrite (WIP)
 
-I built [bakersfieldtechnology.com](https://bakersfieldtechnology.com) using Next.js's static export feature so I could host it for free on Netlify. Using a static site prevented me from being able to embed a contact form.
+I originally built the 2-page [bakersfieldtechnology.com](https://bakersfieldtechnology.com) website in 2021 using Next.js. Years later when I wanted to learn [Templ](https://templ.guide/) and [the Echo framework](https://echo.labstack.com/), rebuilding the website in Go seemed like a great learning opportunity.
 
-I rebuilt the site–not because I'm seeing contracting work in Bakersfield, but instead so I can get experience with Go, templ and Vite. I also believe that Go apps are lightweight enough that I can probably run a dozen apps on a $5/month DigitalOcean server.
+On the frontend, the site uses Tailwind & Scss for styles, TypeScript for interactivity, and Vite for bundling. When running a production build, the assets are compiled into the binary using `//go:embed` tags. The work I did building the Vite integration on this app also spun out into its own [blog post](https://dev.to/tylerlwsmith/build-a-vite-5-backend-integration-with-flask-jch).
 
 ## Developing
 
 You'll need the following on your system to build this app:
 
-- Go ([Installation](https://go.dev/doc/install))
-- Templ CLI ([Installation](https://templ.guide/quick-start/installation))
-- Air ([Installation](https://github.com/cosmtrek/air))
-- Node/NPM ([Installation](https://nodejs.org/en/download))
+- Go ([Installation guide](https://go.dev/doc/install))
+- Templ CLI ([Installation guide](https://templ.guide/quick-start/installation))
+- Air ([Installation guide](https://github.com/cosmtrek/air))
+- Node/NPM ([Installation guide](https://nodejs.org/en/download))
 
 After cloning the repo, run the following commands:
 
@@ -32,17 +32,13 @@ You can start the Go app with live reloading using the following command:
 air
 ```
 
-The Templ watcher currently has issues, but once they are resolved the water can be run with the following command:
+The Templ watcher has issues at the time of development, but once they are resolved the watcher can be run with the following command:
 
 ```sh
 templ generate --watch --proxy="http://localhost:3005" --cmd="go run ."
 ```
 
-## Build tags in Neovim
-
-I'm not sure exactly how to make `gopls` work with Go build tags in Neovim, but maybe when I understand a little bit more about Neovim [this Discourse dicussion](https://neovim.discourse.group/t/gopls-settings-buildflags/790/10) will make more sense.
-
-## Building
+## Building locally
 
 To build the project for the local machine, run the following command:
 
@@ -50,15 +46,15 @@ To build the project for the local machine, run the following command:
 npm run build && templ generate && go build -o bakersfieldtechnology.com
 ```
 
-## Deploying
+## Building for production
 
-To build the project for the server, run the following command:
+To build the project for the production x86 Linux server, run the following command:
 
 ```sh
 npm run build && templ generate && GOOS=linux GOARCH=amd64 go build -o bakersfieldtechnology.com
 ```
 
-You'll find a unit file and Caddy file for the server in the `deployment/` directory of this project. The unit file will require some modification to tailor it to the particular server.
+You'll find a unit file and Caddyfile for the server in the `deployment/` directory of this project. The unit file will require some modification to tailor it to the particular server.
 
 ## Router
 
@@ -71,10 +67,10 @@ For posterity, I'm including a list of all the routers I evaluated for this proj
 - [Gorilla Mux](https://github.com/gorilla/mux). Very popular. Compatible with `net/http`.
 - [Gin](https://gin-gonic.com/). Claims to be the fastest router. Zero allocations. Docs leave a lot to be desired.
 
-## Vite
-
-I am following the [Vite Backend Integration guide](https://vitejs.dev/guide/backend-integration.html) to try to use Vite for compiling JS/TS and Scss. However, the project uses Tailwind for the majority of its styling.
-
 ## Build tag gopls support
 
-Support for mutually exclusive build tags is not great. Read more [here](https://github.com/golang/go/issues/29202).
+The `gopls` support for mutually exclusive build tags isn't great. Read more [here](https://github.com/golang/go/issues/29202).
+
+## Build tags in Neovim
+
+I'm not sure exactly how to make `gopls` work with Go build tags in Neovim, but maybe when I understand a little bit more about Neovim [this Discourse dicussion](https://neovim.discourse.group/t/gopls-settings-buildflags/790/10) will make more sense.
