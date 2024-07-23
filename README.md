@@ -1,4 +1,4 @@
-# Bakersfield Technology Go Rewrite (WIP)
+# Bakersfield Technology Go Rewrite
 
 I originally built the 2-page [bakersfieldtechnology.com](https://bakersfieldtechnology.com) website in 2021 using Next.js. Years later when I wanted to learn [Templ](https://templ.guide/) and [the Echo framework](https://echo.labstack.com/), rebuilding the website in Go seemed like a great learning opportunity.
 
