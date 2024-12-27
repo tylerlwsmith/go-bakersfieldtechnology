@@ -1,5 +1,7 @@
 # Bakersfield Technology Go Rewrite
 
+> This project has been superseded by a new Astro-powered version of the site. You can view the new repo [here](https://github.com/tylerlwsmith/bakersfield-technology-astro).
+
 I originally built the 2-page [bakersfieldtechnology.com](https://bakersfieldtechnology.com) website in 2021 using Next.js. Years later when I wanted to learn [Templ](https://templ.guide/) and the [Echo framework](https://echo.labstack.com/), rebuilding the website in Go seemed like a great learning opportunity.
 
 On the frontend, the site uses Tailwind & Scss for styles, TypeScript for interactivity, and Vite for bundling. When running a production build, the assets are compiled into the binary using `//go:embed` tags. The work I did building the Vite integration on this app also spun out into its own [blog post](https://dev.to/tylerlwsmith/build-a-vite-5-backend-integration-with-flask-jch).
